@@ -10,10 +10,17 @@ export default function page() {
   const inputValueInit: InputValue = { name: "", email: "", phoneNumber: "" };
   const [formData, setformData] = useState<InputValue>(inputValueInit);
   const [isSubmit, setIsSubmit] = useState<boolean>(false);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmit(!isSubmit);
+  };
   return (
     <>
       <Header />
-      {isSubmit ? <Confirm formData={formData} /> : <Form formData={formData} setformData={setformData} setIsSubmit={setIsSubmit} />}
+      <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
+        {isSubmit ? <Confirm formData={formData} handleBack={() => setIsSubmit(false)} /> : <Form formData={formData} setformData={setformData} handleSubmit={handleSubmit} />}
+      </div>
     </>
   );
 }
