@@ -35,6 +35,7 @@ export default function Confirm(props: ConfirmProps) {
             入力画面へ戻る
           </button>
           <button
+            data-testid="form-submit"
             className="w-1/2 text-center bg-black hover:bg-gray-800 text-white font-semibold py-2 px-4 border border-gray-400 rounded shadow"
             type="button"
             onClick={() => alert("申し込みます")}
